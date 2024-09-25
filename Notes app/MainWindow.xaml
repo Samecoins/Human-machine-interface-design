@@ -6,30 +6,57 @@
         xmlns:local="clr-namespace:Notes_app"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
+    <!-- Градиентный фон окна -->
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="LightBlue" Offset="0"/>
+            <GradientStop Color="LightGray" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+
     <Grid>
-        <!-- Определяем строки для разметки -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <!-- Верхняя область -->
+            <!-- Меню -->
             <RowDefinition Height="*"/>
-            <!-- Центральная область -->
+            <!-- Текст -->
             <RowDefinition Height="Auto"/>
-            <!-- Нижняя область -->
+            <!-- Кнопки -->
         </Grid.RowDefinitions>
 
-        <!-- Верхняя область для меню -->
-        <Border Grid.Row="0" Background="LightGray" Height="50" Margin="10">
-            <!-- Здесь будет меню -->
-        </Border>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
 
-        <!-- Центральная область для текстового поля -->
-        <Border Grid.Row="1" Background="White" Margin="10">
-            <!-- Здесь будет основной контент -->
-        </Border>
+        <!-- Меню с выравниванием в левом верхнем углу -->
+        <Menu Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5">
+            <MenuItem Header="File">
+                <MenuItem Header="New"/>
+                <MenuItem Header="Save"/>
+                <MenuItem Header="Open"/>
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Undo"/>
+                <MenuItem Header="Redo"/>
+            </MenuItem>
+        </Menu>
 
-        <!-- Нижняя область для кнопок -->
-        <Border Grid.Row="2" Background="LightGray" Height="50" Margin="10">
-            <!-- Здесь можно разместить кнопки -->
-        </Border>
+        <!-- Текстовая область с границей -->
+        <ScrollViewer Grid.Row="1" Grid.Column="1" Margin="10">
+            <Border BorderBrush="LightGray" BorderThickness="1" CornerRadius="5" Padding="10" Background="White">
+                <TextBlock Text="This is where the text content will go..." TextWrapping="Wrap" FontSize="14" FontFamily="Segoe UI"/>
+            </Border>
+        </ScrollViewer>
+
+        <!-- Кнопки без стилей -->
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <!-- Первая кнопка -->
+            <Button Content="Save" Width="100" Padding="5" Margin="5"/>
+            <!-- Вторая кнопка -->
+            <Button Content="Open" Width="100" Padding="5" Margin="5"/>
+        </StackPanel>
     </Grid>
 </Window>
